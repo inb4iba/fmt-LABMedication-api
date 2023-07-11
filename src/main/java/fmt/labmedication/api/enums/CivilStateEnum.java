@@ -4,14 +4,11 @@ import lombok.Getter;
 
 @Getter
 public enum CivilStateEnum {
-    CLINICO_GERAL("Clínico Geral"),
-    ANESTESISTA("Anestesista"),
-    DERMATOLOGIA("Dermatologia"),
-    GINECOLOGIA("Ginecologia"),
-    NEUROLOGIA("Neurologia"),
-    PEDIATRIA("Pediatria"),
-    PSIQUIATRIA("Psiquiatria"),
-    ORTOPEDIA("Ortopedia");
+    SOLTEIRO("Solteiro"),
+    CASADO("Casado"),
+    SEPARADO("Separado"),
+    DIVORCIADO("Divorciado"),
+    VIUVO("Vi\u00FAvo");
 
     private String name;
 
