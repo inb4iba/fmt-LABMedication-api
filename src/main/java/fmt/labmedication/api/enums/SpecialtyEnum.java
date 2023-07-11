@@ -3,7 +3,7 @@ package fmt.labmedication.api.enums;
 import lombok.Getter;
 
 @Getter
-public enum SpecializationEnum {
+public enum SpecialtyEnum {
     CLINICO_GERAL("Clínico Geral"),
     ANESTESISTA("Anestesista"),
     DERMATOLOGIA("Dermatologia"),
@@ -13,9 +13,9 @@ public enum SpecializationEnum {
     PSIQUIATRIA("Psiquiatria"),
     ORTOPEDIA("Ortopedia");
 
-    private String specialization;
+    private String specialty;
 
-    private SpecializationEnum(String specialization) {
-        this.specialization = specialization;
+    private SpecialtyEnum(String specialty) {
+        this.specialty = specialty;
     }
 }
