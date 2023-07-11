@@ -9,7 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,9 +42,9 @@ public class MedicationAdministeringEntity {
     @Column(nullable = false)
     String observations;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     PatientEntity patient;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     UserEntity doctor;
 }
