@@ -10,9 +10,9 @@ public enum CivilStateEnum {
     DIVORCIADO("Divorciado"),
     VIUVO("Vi\u00FAvo");
 
-    private String name;
+    private String state;
 
-    private CivilStateEnum(String name) {
-        this.name = name;
+    private CivilStateEnum(String state) {
+        this.state = state;
     }
 }
