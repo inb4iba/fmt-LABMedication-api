@@ -18,5 +18,4 @@ public enum MedicationTypeEnum {
     private MedicationTypeEnum(String type) {
         this.type = type;
     }
-
 }
