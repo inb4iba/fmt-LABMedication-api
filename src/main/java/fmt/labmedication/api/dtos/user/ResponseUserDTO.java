@@ -6,11 +6,13 @@ import fmt.labmedication.api.enums.CivilStateEnum;
 import fmt.labmedication.api.enums.SpecialtyEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ResponseUserDTO {
     Long id;
 
@@ -24,7 +26,7 @@ public class ResponseUserDTO {
 
     String rg;
 
-    CivilStateEnum civil_state;
+    CivilStateEnum civilState;
 
     String telephone;
 

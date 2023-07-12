@@ -22,7 +22,7 @@ public class RegisterUserDTO {
 
     String rg;
 
-    CivilStateEnum civil_state;
+    CivilStateEnum civilState;
 
     String telephone;
 
