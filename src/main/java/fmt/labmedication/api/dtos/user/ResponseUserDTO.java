@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import fmt.labmedication.api.enums.CivilStateEnum;
 import fmt.labmedication.api.enums.SpecialtyEnum;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
