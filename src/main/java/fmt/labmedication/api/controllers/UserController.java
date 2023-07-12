@@ -13,6 +13,7 @@ import fmt.labmedication.api.dtos.user.ResponseUserDTO;
 import fmt.labmedication.api.entitites.UserEntity;
 import fmt.labmedication.api.mappers.UserMapper;
 import fmt.labmedication.api.services.UserService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -25,7 +26,7 @@ public class UserController {
     private UserMapper mapper;
 
     @PostMapping
-    public ResponseEntity<ResponseUserDTO> registerUser(@RequestBody RegisterUserDTO registerUserDto) {
+    public ResponseEntity<ResponseUserDTO> registerUser(@RequestBody @Valid RegisterUserDTO registerUserDto) {
         UserEntity user = mapper.toEntity(registerUserDto);
         ResponseUserDTO responseUserDto = mapper.toDto(this.userService.registerUser(user));
         return new ResponseEntity<ResponseUserDTO>(responseUserDto, HttpStatus.CREATED);

@@ -2,8 +2,6 @@ package fmt.labmedication.api.entitites;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import fmt.labmedication.api.enums.CivilStateEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +28,7 @@ public abstract class PersonEntity {
     @Column(nullable = false)
     LocalDate birthdate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String cpf;
 
     @Column(nullable = false)

@@ -2,6 +2,8 @@ package fmt.labmedication.api.dtos.user;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import fmt.labmedication.api.enums.CivilStateEnum;
 import fmt.labmedication.api.enums.SpecialtyEnum;
 import lombok.AllArgsConstructor;
@@ -11,8 +13,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class ResponseUserDTO {
     Long id;
 
@@ -20,6 +20,7 @@ public class ResponseUserDTO {
 
     String gender;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     LocalDate birthdate;
 
     String cpf;

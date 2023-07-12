@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserEntity extends PersonEntity {
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String crm;
 
     @Column(nullable = false)
