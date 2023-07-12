@@ -2,14 +2,20 @@ package fmt.labmedication.api.entitites;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import fmt.labmedication.api.enums.CivilStateEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 
 @MappedSuperclass
+@Getter
+@Setter
 public abstract class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +28,7 @@ public abstract class PersonEntity {
     String gender;
 
     @Column(nullable = false)
-    LocalDate birthDate;
+    LocalDate birthdate;
 
     @Column(nullable = false)
     String cpf;
@@ -31,7 +37,7 @@ public abstract class PersonEntity {
     String rg;
 
     @Column(nullable = false)
-    CivilStateEnum civil_state;
+    CivilStateEnum civilState;
 
     String telephone;
 
