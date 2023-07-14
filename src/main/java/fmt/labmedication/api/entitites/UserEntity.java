@@ -3,16 +3,14 @@ package fmt.labmedication.api.entitites;
 import fmt.labmedication.api.enums.SpecialtyEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity(name = "users")
 @Getter
 @Setter
-@AllArgsConstructor
 public class UserEntity extends PersonEntity {
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String crm;
 
     @Column(nullable = false)

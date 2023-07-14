@@ -8,8 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 
 @MappedSuperclass
+@Getter
+@Setter
 public abstract class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,16 +26,16 @@ public abstract class PersonEntity {
     String gender;
 
     @Column(nullable = false)
-    LocalDate birthDate;
+    LocalDate birthdate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String cpf;
 
     @Column(nullable = false)
     String rg;
 
     @Column(nullable = false)
-    CivilStateEnum civil_state;
+    CivilStateEnum civilState;
 
     String telephone;
 
