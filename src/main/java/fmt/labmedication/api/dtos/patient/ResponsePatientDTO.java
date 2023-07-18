@@ -6,7 +6,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import fmt.labmedication.api.entitites.AddressEntity;
 import fmt.labmedication.api.enums.CivilStateEnum;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ResponsePatientDTO {
     Long id;
 

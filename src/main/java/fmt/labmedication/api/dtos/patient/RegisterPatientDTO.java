@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import fmt.labmedication.api.entitites.AddressEntity;
 import fmt.labmedication.api.enums.CivilStateEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
