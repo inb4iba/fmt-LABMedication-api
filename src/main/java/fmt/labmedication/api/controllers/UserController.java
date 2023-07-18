@@ -3,6 +3,7 @@ package fmt.labmedication.api.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fmt.labmedication.api.dtos.user.PasswordDTO;
 import fmt.labmedication.api.dtos.user.RegisterUserDTO;
 import fmt.labmedication.api.dtos.user.ResponseUserDTO;
 import fmt.labmedication.api.dtos.user.UpdateUserDTO;
@@ -43,6 +45,13 @@ public class UserController {
         user = userService.updateUser(user);
         if (user == null)
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<ResponseUserDTO>(mapper.toDto(user), HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}/senha")
+    public ResponseEntity<ResponseUserDTO> updatePassword(@PathVariable("id") Long id,
+            @RequestBody @Valid PasswordDTO passwordDto) {
+        UserEntity user = userService.updatePassword(id, passwordDto);
         return new ResponseEntity<ResponseUserDTO>(mapper.toDto(user), HttpStatus.OK);
     }
 }
