@@ -52,4 +52,9 @@ public class PatientController {
         return new ResponseEntity<List<ResponsePatientDTO>>(
                 patientService.getAllPatients().stream().map(patient -> mapper.toDto(patient)).toList(), HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponsePatientDTO> getPatientById(@PathVariable("id") Long id) {
+        return new ResponseEntity<ResponsePatientDTO>(mapper.toDto(patientService.getPatientById(id)), HttpStatus.OK);
+    }
 }

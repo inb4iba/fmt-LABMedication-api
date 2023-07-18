@@ -27,14 +27,18 @@ public class PatientService {
     }
 
     public PatientEntity updatePatient(PatientEntity updatedPatient) {
-        patientRepository.findById(updatedPatient.getId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado!"));
+        getPatientById(updatedPatient.getId());
         updateAddressDetails(updatedPatient);
         return patientRepository.save(updatedPatient);
     }
 
     public List<PatientEntity> getAllPatients() {
         return patientRepository.findAll();
+    }
+
+    public PatientEntity getPatientById(Long id) {
+        return patientRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado!"));
     }
 
     private void updateAddressDetails(PatientEntity patient) {
