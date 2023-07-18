@@ -57,5 +57,5 @@ public class RegisterPatientDTO {
     LocalDate healthplanExpireDate;
 
     @NotNull
-    AddressEntity address;
+    Long addressId;
 }
