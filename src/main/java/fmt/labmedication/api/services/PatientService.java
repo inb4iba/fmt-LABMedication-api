@@ -20,9 +20,20 @@ public class PatientService {
     AddressRepository addressRepository;
 
     public PatientEntity registerPatient(PatientEntity patient) {
+        updateAddressDetails(patient);
+        return patientRepository.save(patient);
+    }
+
+    public PatientEntity updatePatient(PatientEntity updatedPatient) {
+        patientRepository.findById(updatedPatient.getId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado!"));
+        updateAddressDetails(updatedPatient);
+        return patientRepository.save(updatedPatient);
+    }
+
+    private void updateAddressDetails(PatientEntity patient) {
         AddressEntity address = addressRepository.findById(patient.getAddress().getId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Endereço inválido!"));
         patient.setAddress(address);
-        return patientRepository.save(patient);
     }
 }
