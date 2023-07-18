@@ -6,14 +6,12 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity(name = "patients")
 @Getter
 @Setter
-@AllArgsConstructor
 public class PatientEntity extends PersonEntity {
     @Column(nullable = false)
     String emergencyContact;
