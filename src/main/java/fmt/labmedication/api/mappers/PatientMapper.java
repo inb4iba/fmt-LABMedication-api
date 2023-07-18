@@ -12,13 +12,13 @@ import fmt.labmedication.api.entitites.PatientEntity;
 public class PatientMapper {
 
     @Autowired
-    static private ModelMapper mapper;
+    private ModelMapper mapper;
 
-    static public ResponsePatientDTO toDto(PatientEntity patient) {
+    public ResponsePatientDTO toDto(PatientEntity patient) {
         return mapper.map(patient, ResponsePatientDTO.class);
     }
 
-    static public PatientEntity toEntity(RegisterPatientDTO patientDto) {
+    public PatientEntity toEntity(RegisterPatientDTO patientDto) {
         return mapper.map(patientDto, PatientEntity.class);
     }
 }
