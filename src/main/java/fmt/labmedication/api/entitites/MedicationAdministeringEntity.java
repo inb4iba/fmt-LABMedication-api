@@ -1,6 +1,6 @@
 package fmt.labmedication.api.entitites;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import fmt.labmedication.api.enums.MedicationTypeEnum;
 import fmt.labmedication.api.enums.MedicationUnitEnum;
@@ -26,7 +26,7 @@ public class MedicationAdministeringEntity {
     String name;
 
     @Column(nullable = false)
-    Date date;
+    LocalDateTime date;
 
     @Column(nullable = false)
     MedicationTypeEnum type;
