@@ -2,16 +2,21 @@ package fmt.labmedication.api.dtos.medicationAdministering;
 
 import java.time.LocalDateTime;
 
-import fmt.labmedication.api.entitites.PatientEntity;
-import fmt.labmedication.api.entitites.UserEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import fmt.labmedication.api.enums.MedicationTypeEnum;
 import fmt.labmedication.api.enums.MedicationUnitEnum;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ResponseMedicationAdministeringDTO {
     Long id;
 
     String name;
 
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
     LocalDateTime date;
 
     MedicationTypeEnum type;
@@ -22,7 +27,7 @@ public class ResponseMedicationAdministeringDTO {
 
     String observations;
 
-    PatientEntity patient;
+    Long patientId;
 
-    UserEntity doctor;
+    Long doctorId;
 }
