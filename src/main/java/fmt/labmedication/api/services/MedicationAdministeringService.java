@@ -32,4 +32,9 @@ public class MedicationAdministeringService {
         return medicationAdministeringRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Registro não encontrado!"));
     }
+
+    public void deleteMedicationAdministering(Long id) {
+        getMedicationAdministeringById(id);
+        medicationAdministeringRepository.deleteById(id);
+    }
 }
