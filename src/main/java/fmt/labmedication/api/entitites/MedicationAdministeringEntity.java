@@ -17,7 +17,6 @@ import lombok.Setter;
 @Entity(name = "medications_administering")
 @Getter
 @Setter
-@AllArgsConstructor
 public class MedicationAdministeringEntity {
 
     @Id
