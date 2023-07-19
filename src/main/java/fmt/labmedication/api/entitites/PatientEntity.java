@@ -31,7 +31,7 @@ public class PatientEntity extends PersonEntity {
     @Column(nullable = true)
     LocalDate healthplanExpireDate;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(optional = false)
     AddressEntity address;
 
 }
