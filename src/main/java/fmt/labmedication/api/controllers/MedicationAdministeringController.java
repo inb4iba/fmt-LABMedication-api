@@ -17,6 +17,7 @@ import fmt.labmedication.api.mappers.MedicationAdministeringMapper;
 import fmt.labmedication.api.services.MedicationAdministeringService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -57,6 +58,12 @@ public class MedicationAdministeringController {
         return new ResponseEntity<ResponseMedicationAdministeringDTO>(
                 mapper.toDto(medicationAdministeringService.getMedicationAdministeringById(id)),
                 HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMedicationAdministering(@PathVariable("id") Long id) {
+        medicationAdministeringService.deleteMedicationAdministering(id);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
     private void throwIfUpdateDtoHasDate(UpdateMedicationAdministeringDTO medicationAdministeringDTO) {
