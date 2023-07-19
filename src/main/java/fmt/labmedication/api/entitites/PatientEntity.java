@@ -2,7 +2,6 @@ package fmt.labmedication.api.entitites;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
@@ -31,7 +30,7 @@ public class PatientEntity extends PersonEntity {
     @Column(nullable = true)
     LocalDate healthplanExpireDate;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(optional = false)
     AddressEntity address;
 
 }

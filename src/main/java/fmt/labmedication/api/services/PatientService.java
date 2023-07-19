@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import fmt.labmedication.api.entitites.AddressEntity;
 import fmt.labmedication.api.entitites.PatientEntity;
 import fmt.labmedication.api.repositories.AddressRepository;
+import fmt.labmedication.api.repositories.MedicationAdministeringRepository;
 import fmt.labmedication.api.repositories.PatientRepository;
 
 @Service
@@ -20,6 +21,9 @@ public class PatientService {
 
     @Autowired
     AddressRepository addressRepository;
+
+    @Autowired
+    MedicationAdministeringRepository medicationAdministeringRepository;
 
     public PatientEntity registerPatient(PatientEntity patient) {
         updateAddressDetails(patient);
@@ -39,6 +43,18 @@ public class PatientService {
     public PatientEntity getPatientById(Long id) {
         return patientRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado!"));
+    }
+
+    public void deletePatient(Long id) {
+        getPatientById(id);
+        checkIfPatientHasMedicationRegister(id);
+        patientRepository.deleteById(id);
+    }
+
+    private void checkIfPatientHasMedicationRegister(Long patientId) {
+        if (medicationAdministeringRepository.existsByPatientId(patientId))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Paciente possui registros de medicamento administrado!");
     }
 
     private void updateAddressDetails(PatientEntity patient) {

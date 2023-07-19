@@ -10,14 +10,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity(name = "medications_administering")
 @Getter
 @Setter
-@AllArgsConstructor
 public class MedicationAdministeringEntity {
 
     @Id
