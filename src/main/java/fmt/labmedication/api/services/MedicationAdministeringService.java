@@ -1,8 +1,12 @@
 package fmt.labmedication.api.services;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import fmt.labmedication.api.dtos.medicationAdministering.UpdateMedicationAdministeringDTO;
 import fmt.labmedication.api.entitites.MedicationAdministeringEntity;
 import fmt.labmedication.api.repositories.MedicationAdministeringRepository;
 
@@ -15,5 +19,17 @@ public class MedicationAdministeringService {
     public MedicationAdministeringEntity registerMedicationAdministering(
             MedicationAdministeringEntity medicationAdministering) {
         return medicationAdministeringRepository.save(medicationAdministering);
+    }
+
+    public MedicationAdministeringEntity updateMedicationAdministering(
+            UpdateMedicationAdministeringDTO medicationAdministeringDTO, Long id) {
+        MedicationAdministeringEntity medicationAdministering = getMedicationAdministeringById(id);
+        BeanUtils.copyProperties(medicationAdministeringDTO, medicationAdministering);
+        return medicationAdministering;
+    }
+
+    private MedicationAdministeringEntity getMedicationAdministeringById(Long id) {
+        return medicationAdministeringRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Registro não encontrado!"));
     }
 }
