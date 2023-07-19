@@ -17,6 +17,7 @@ import fmt.labmedication.api.mappers.MedicationAdministeringMapper;
 import fmt.labmedication.api.services.MedicationAdministeringService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
@@ -39,7 +40,7 @@ public class MedicationAdministeringController {
                 HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ResponseMedicationAdministeringDTO> updateMedicationAdministering(@PathVariable("id") Long id,
             @Valid @RequestBody UpdateMedicationAdministeringDTO updateMedicationAdministeringDTO) {
         throwIfUpdateDtoHasDate(updateMedicationAdministeringDTO);
@@ -47,6 +48,14 @@ public class MedicationAdministeringController {
                 mapper.toDto(medicationAdministeringService.updateMedicationAdministering(
                         updateMedicationAdministeringDTO,
                         id)),
+                HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseMedicationAdministeringDTO> getMedicationAdministeringById(
+            @PathVariable("id") Long id) {
+        return new ResponseEntity<ResponseMedicationAdministeringDTO>(
+                mapper.toDto(medicationAdministeringService.getMedicationAdministeringById(id)),
                 HttpStatus.OK);
     }
 

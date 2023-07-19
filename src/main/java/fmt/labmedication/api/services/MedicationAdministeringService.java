@@ -28,7 +28,7 @@ public class MedicationAdministeringService {
         return medicationAdministering;
     }
 
-    private MedicationAdministeringEntity getMedicationAdministeringById(Long id) {
+    public MedicationAdministeringEntity getMedicationAdministeringById(Long id) {
         return medicationAdministeringRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Registro não encontrado!"));
     }
