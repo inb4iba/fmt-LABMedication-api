@@ -1,6 +1,7 @@
 package fmt.labmedication.api.dtos.address;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,8 +20,8 @@ public class RegisterAddressDTO {
     @NotBlank
     String street;
 
-    @NotBlank
-    int number;
+    @NotNull
+    Integer number;
 
     String complement;
 
