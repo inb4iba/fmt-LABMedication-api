@@ -36,8 +36,10 @@ public class PatientService {
         return patientRepository.save(updatedPatient);
     }
 
-    public List<PatientEntity> getAllPatients() {
-        return patientRepository.findAll();
+    public List<PatientEntity> getAllPatients(String name) {
+        if (name == null)
+            return patientRepository.findAll();
+        return patientRepository.findAllByNameContainingIgnoreCase(name);
     }
 
     public PatientEntity getPatientById(Long id) {
