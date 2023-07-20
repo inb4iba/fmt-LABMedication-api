@@ -1,8 +1,11 @@
 package fmt.labmedication.api.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +34,12 @@ public class AddressController {
         AddressEntity address = mapper.toEntity(registerAddressDTO);
         return new ResponseEntity<ResponseAddressDTO>(mapper.toDto(addressService.registerAddress(address)),
                 HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ResponseAddressDTO>> getAllAddresses() {
+        return new ResponseEntity<List<ResponseAddressDTO>>(
+                addressService.getAllAddresses().stream().map(address -> mapper.toDto(address)).toList(),
+                HttpStatus.OK);
     }
 }
