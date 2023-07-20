@@ -1,5 +1,7 @@
 package fmt.labmedication.api.services;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import fmt.labmedication.api.dtos.medicationAdministering.UpdateMedicationAdministeringDTO;
+import fmt.labmedication.api.dtos.statistics.ResponseStatisticsDTO;
 import fmt.labmedication.api.entitites.MedicationAdministeringEntity;
 import fmt.labmedication.api.repositories.MedicationAdministeringRepository;
 
@@ -36,5 +39,9 @@ public class MedicationAdministeringService {
     public void deleteMedicationAdministering(Long id) {
         getMedicationAdministeringById(id);
         medicationAdministeringRepository.deleteById(id);
+    }
+
+    public List<ResponseStatisticsDTO> getStatistics() {
+        return medicationAdministeringRepository.getMedicationsByPatient();
     }
 }
