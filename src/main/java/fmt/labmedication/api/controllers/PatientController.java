@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fmt.labmedication.api.dtos.patient.RegisterPatientDTO;
@@ -49,9 +50,11 @@ public class PatientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ResponsePatientDTO>> getAllPatients() {
+    public ResponseEntity<List<ResponsePatientDTO>> getAllPatients(
+            @RequestParam(required = false, name = "nome") String name) {
         return new ResponseEntity<List<ResponsePatientDTO>>(
-                patientService.getAllPatients().stream().map(patient -> mapper.toDto(patient)).toList(), HttpStatus.OK);
+                patientService.getAllPatients(name).stream().map(patient -> mapper.toDto(patient)).toList(),
+                HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
