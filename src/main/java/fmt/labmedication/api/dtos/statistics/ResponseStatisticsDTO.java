@@ -1,11 +1,7 @@
 package fmt.labmedication.api.dtos.statistics;
 
-import lombok.Getter;
-import lombok.Setter;
+public interface ResponseStatisticsDTO {
+    String getName();
 
-@Getter
-@Setter
-public class ResponseStatisticsDTO {
-    String name;
-    Integer medicationCount;
+    Integer getMedicationCount();
 }
