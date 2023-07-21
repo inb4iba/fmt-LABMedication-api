@@ -25,49 +25,52 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/medicamentos")
 public class MedicationAdministeringController {
 
-    @Autowired
-    private MedicationAdministeringService medicationAdministeringService;
+        @Autowired
+        private MedicationAdministeringService medicationAdministeringService;
 
-    @Autowired
-    private MedicationAdministeringMapper mapper;
+        @Autowired
+        private MedicationAdministeringMapper mapper;
 
-    @PostMapping
-    public ResponseEntity<ResponseMedicationAdministeringDTO> registerMedicationAdministering(
-            @Valid @RequestBody RegisterMedicationAdministeringDTO registerMedicationAdministeringDTO) {
-        MedicationAdministeringEntity medicationAdministering = mapper.toEntity(registerMedicationAdministeringDTO);
-        medicationAdministering = medicationAdministeringService
-                .registerMedicationAdministering(medicationAdministering);
-        return new ResponseEntity<ResponseMedicationAdministeringDTO>(mapper.toDto(medicationAdministering),
-                HttpStatus.CREATED);
-    }
+        @PostMapping
+        public ResponseEntity<ResponseMedicationAdministeringDTO> registerMedicationAdministering(
+                        @Valid @RequestBody RegisterMedicationAdministeringDTO registerMedicationAdministeringDTO) {
+                MedicationAdministeringEntity medicationAdministering = mapper
+                                .toEntity(registerMedicationAdministeringDTO);
+                return new ResponseEntity<ResponseMedicationAdministeringDTO>(
+                                mapper.toDto(medicationAdministeringService
+                                                .registerMedicationAdministering(medicationAdministering)),
+                                HttpStatus.CREATED);
+        }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ResponseMedicationAdministeringDTO> updateMedicationAdministering(@PathVariable("id") Long id,
-            @Valid @RequestBody UpdateMedicationAdministeringDTO updateMedicationAdministeringDTO) {
-        throwIfUpdateDtoHasDate(updateMedicationAdministeringDTO);
-        return new ResponseEntity<ResponseMedicationAdministeringDTO>(
-                mapper.toDto(medicationAdministeringService.updateMedicationAdministering(
-                        updateMedicationAdministeringDTO,
-                        id)),
-                HttpStatus.OK);
-    }
+        @PutMapping("/{id}")
+        public ResponseEntity<ResponseMedicationAdministeringDTO> updateMedicationAdministering(
+                        @PathVariable("id") Long id,
+                        @Valid @RequestBody UpdateMedicationAdministeringDTO updateMedicationAdministeringDTO) {
+                throwIfUpdateDtoHasDate(updateMedicationAdministeringDTO);
+                return new ResponseEntity<ResponseMedicationAdministeringDTO>(
+                                mapper.toDto(medicationAdministeringService.updateMedicationAdministering(
+                                                updateMedicationAdministeringDTO,
+                                                id)),
+                                HttpStatus.OK);
+        }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ResponseMedicationAdministeringDTO> getMedicationAdministeringById(
-            @PathVariable("id") Long id) {
-        return new ResponseEntity<ResponseMedicationAdministeringDTO>(
-                mapper.toDto(medicationAdministeringService.getMedicationAdministeringById(id)),
-                HttpStatus.OK);
-    }
+        @GetMapping("/{id}")
+        public ResponseEntity<ResponseMedicationAdministeringDTO> getMedicationAdministeringById(
+                        @PathVariable("id") Long id) {
+                return new ResponseEntity<ResponseMedicationAdministeringDTO>(
+                                mapper.toDto(medicationAdministeringService.getMedicationAdministeringById(id)),
+                                HttpStatus.OK);
+        }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMedicationAdministering(@PathVariable("id") Long id) {
-        medicationAdministeringService.deleteMedicationAdministering(id);
-        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-    }
+        @DeleteMapping("/{id}")
+        public ResponseEntity<Void> deleteMedicationAdministering(@PathVariable("id") Long id) {
+                medicationAdministeringService.deleteMedicationAdministering(id);
+                return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+        }
 
-    private void throwIfUpdateDtoHasDate(UpdateMedicationAdministeringDTO medicationAdministeringDTO) {
-        if (medicationAdministeringDTO.getDate() != null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não é possível atualizar a data de registro!");
-    }
+        private void throwIfUpdateDtoHasDate(UpdateMedicationAdministeringDTO medicationAdministeringDTO) {
+                if (medicationAdministeringDTO.getDate() != null)
+                        throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                                        "Não é possível atualizar a data de registro!");
+        }
 }
