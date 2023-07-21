@@ -36,8 +36,8 @@ public class PatientController {
     public ResponseEntity<ResponsePatientDTO> registerPatient(
             @Valid @RequestBody RegisterPatientDTO registerPatientDTO) {
         PatientEntity patient = mapper.toEntity(registerPatientDTO);
-        patient = patientService.registerPatient(patient);
-        return new ResponseEntity<ResponsePatientDTO>(mapper.toDto(patient), HttpStatus.CREATED);
+        return new ResponseEntity<ResponsePatientDTO>(mapper.toDto(patientService.registerPatient(patient)),
+                HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -45,8 +45,8 @@ public class PatientController {
             @Valid @RequestBody RegisterPatientDTO registerPatientDTO) {
         PatientEntity patient = mapper.toEntity(registerPatientDTO);
         patient.setId(id);
-        patient = patientService.updatePatient(patient);
-        return new ResponseEntity<ResponsePatientDTO>(mapper.toDto(patient), HttpStatus.OK);
+        return new ResponseEntity<ResponsePatientDTO>(mapper.toDto(patientService.updatePatient(patient)),
+                HttpStatus.OK);
     }
 
     @GetMapping
