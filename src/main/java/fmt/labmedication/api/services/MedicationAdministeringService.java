@@ -27,8 +27,9 @@ public class MedicationAdministeringService {
     public MedicationAdministeringEntity updateMedicationAdministering(
             UpdateMedicationAdministeringDTO medicationAdministeringDTO, Long id) {
         MedicationAdministeringEntity medicationAdministering = getMedicationAdministeringById(id);
+        medicationAdministeringDTO.setDate(medicationAdministering.getDate());
         BeanUtils.copyProperties(medicationAdministeringDTO, medicationAdministering);
-        return medicationAdministering;
+        return medicationAdministeringRepository.save(medicationAdministering);
     }
 
     public MedicationAdministeringEntity getMedicationAdministeringById(Long id) {
