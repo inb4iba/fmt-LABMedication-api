@@ -2,6 +2,10 @@ package fmt.labmedication.api.dtos.user;
 
 import java.time.LocalDate;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import fmt.labmedication.api.enums.CivilStateEnum;
@@ -49,4 +53,15 @@ public class UpdateUserDTO {
 
     @NotNull
     SpecialtyEnum specialty;
+
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+    public UpdateUserDTO(String cpf, String telephone) {
+        if (!cpf.matches("([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})"))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CPF precisa estar no formato: XXX.XXX.XXX-XX.");
+        if (!telephone.matches("(\\([0-9]{2}\\)[0-9]{5}-[0-9]{4})|(\\([0-9]{2}\\)[0-9]{4}-[0-9]{4})"))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Telefone precisa estar em um dos formatos: (XX)XXXXX-XXXX | (XX)XXXX-XXXX.");
+        this.cpf = cpf;
+        this.telephone = telephone;
+    }
 }

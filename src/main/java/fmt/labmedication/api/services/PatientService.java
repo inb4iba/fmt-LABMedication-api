@@ -26,6 +26,7 @@ public class PatientService {
     MedicationAdministeringRepository medicationAdministeringRepository;
 
     public PatientEntity registerPatient(PatientEntity patient) {
+        checkIfAddressOnAnotherPatient(patient.getAddress().getId());
         updateAddressDetails(patient);
         return patientRepository.save(patient);
     }
@@ -57,6 +58,11 @@ public class PatientService {
         if (medicationAdministeringRepository.existsByPatientId(patientId))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "Paciente possui registros de medicamento administrado!");
+    }
+
+    private void checkIfAddressOnAnotherPatient(Long addressId) {
+        if (patientRepository.existsByAddressId(addressId))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Endereço já cadastrado em outro paciente!");
     }
 
     private void updateAddressDetails(PatientEntity patient) {
