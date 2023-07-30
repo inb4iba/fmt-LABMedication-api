@@ -1,7 +1,5 @@
 package fmt.labmedication.api.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,26 +16,30 @@ public class UserService {
     private UserRepository userRepository;
 
     public UserEntity registerUser(UserEntity user) {
+        if (userRepository.existsUserByCpf(user.getCpf()))
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Já existe um usuário com este CPF!");
+        if (userRepository.existsUserByCrm(user.getCrm()))
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Já existe um usuário com este CRM!");
         return userRepository.save(user);
     }
 
     public UserEntity updateUser(UserEntity updatedUser) {
-        Optional<UserEntity> optionalUser = userRepository.findById(updatedUser.getId());
-        if (optionalUser.isEmpty())
-            return null;
-        updatedUser.setPassword(optionalUser.get().getPassword());
+        UserEntity user = getUserById(updatedUser.getId());
+        updatedUser.setPassword(user.getPassword());
         return userRepository.save(updatedUser);
     }
 
     public UserEntity updatePassword(Long id, PasswordDTO passwordDto) {
-        UserEntity user = userRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado!"));
-
+        UserEntity user = getUserById(id);
         if (!oldPasswordMatches(user.getPassword(), passwordDto.getOldPassword()))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Senha inválida!");
-
         user.setPassword(passwordDto.getNewPassword());
         return userRepository.save(user);
+    }
+
+    private UserEntity getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado!"));
     }
 
     private boolean oldPasswordMatches(String oldPassword, String passedOldPassword) {

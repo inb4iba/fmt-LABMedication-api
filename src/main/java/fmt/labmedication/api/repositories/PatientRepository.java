@@ -8,4 +8,6 @@ import fmt.labmedication.api.entitites.PatientEntity;
 public interface PatientRepository extends JpaRepository<PatientEntity, Long> {
 
     public List<PatientEntity> findAllByNameContainingIgnoreCase(String name);
+
+    public Boolean existsByAddressId(Long id);
 }

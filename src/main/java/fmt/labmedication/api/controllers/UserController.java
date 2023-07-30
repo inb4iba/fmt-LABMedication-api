@@ -42,10 +42,7 @@ public class UserController {
             @RequestBody @Valid UpdateUserDTO updateUserDto) {
         updateUserDto.setId(id);
         UserEntity user = mapper.toEntity(updateUserDto);
-        user = userService.updateUser(user);
-        if (user == null)
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        return new ResponseEntity<ResponseUserDTO>(mapper.toDto(user), HttpStatus.OK);
+        return new ResponseEntity<ResponseUserDTO>(mapper.toDto(userService.updateUser(user)), HttpStatus.OK);
     }
 
     @PatchMapping("/{id}/senha")

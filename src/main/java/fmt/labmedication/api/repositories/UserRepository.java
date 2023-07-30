@@ -6,4 +6,7 @@ import fmt.labmedication.api.entitites.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
+    public Boolean existsUserByCpf(String cpf);
+
+    public Boolean existsUserByCrm(String crm);
 }
