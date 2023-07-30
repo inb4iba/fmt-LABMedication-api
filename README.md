@@ -20,8 +20,9 @@ E as seguintes tecnologias:
 
 1. Clone este repositório
 2. Instale as dependências do Maven
-3. Rode o projeto
-4. Utilize um cliente de requisições HTTP (Postman, Insomnia, Thunder Client, etc) para verificar os endpoints em http://localhost:8080
+3. Atualize a configuração do usuário do postgresql no application.properties
+4. Rode o projeto
+5. Utilize um cliente de requisições HTTP (Postman, Insomnia, Thunder Client, etc) para verificar os endpoints em http://localhost:8080
 
 ## Possíveis Melhorias
 
