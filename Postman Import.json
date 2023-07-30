@@ -1,0 +1,320 @@
+{
+    "info": {
+        "_postman_id": "c3a1ca8f-9594-4080-88fd-840a5ea24e09",
+        "name": "LabMedicationAPI",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "RegisterUser",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/usuarios",
+                            "host": [
+                                "usuarios"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Marcela Tatiane Lara Caldeira\",\n  \"cpf\": \"964.929.092-21\",\n  \"rg\": \"375198246\",\n  \"birthdate\": \"12/02/2002\",\n  \"gender\": \"Feminino\",\n  \"email\": \"marcela_caldeira@cancaonova.com\",\n  \"password\": \"f72sasfa\",\n  \"telephone\": \"(63)99475-0849\",\n  \"crm\": \"123412/SC\",\n  \"nationality\": \"Brasil\",\n  \"specialty\": \"ANESTESISTA\",\n  \"civilState\": \"VIUVO\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "UpdateUser",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/usuarios/3",
+                            "path": [
+                                "3"
+                            ],
+                            "host": [
+                                "usuarios"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Marcela Tatiane Lara Caldeira\",\n  \"cpf\": \"648.451.862-93\",\n  \"rg\": \"375198246\",\n  \"birthdate\": \"12/02/2002\",\n  \"gender\": \"Feminino\",\n  \"email\": \"marcela_caldeira@cancaonova.com\",\n  \"telephone\": \"(63)99475-0849\",\n  \"crm\": \"123412/RS\",\n  \"nationality\": \"Brasil\",\n  \"specialty\": \"DERMATOLOGIA\",\n  \"civilState\": \"SOLTEIRO\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "UpdateUserPassword",
+                    "request": {
+                        "method": "PATCH",
+                        "url": {
+                            "raw": "/usuarios/3/senha",
+                            "path": [
+                                "3",
+                                "senha"
+                            ],
+                            "host": [
+                                "usuarios"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"oldPassword\": \"f72sasfa\",\n  \"newPassword\": \"1231231231\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Patients",
+            "item": [
+                {
+                    "name": "RegisterPatient",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/pacientes",
+                            "host": [
+                                "pacientes"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Lucca Daniel Nicolas da Costa\",\n  \"cpf\": \"126.622.504-20\",\n  \"rg\": \"382773226\",\n  \"birthdate\": \"17/02/1958\",\n  \"gender\": \"Feminino\",\n  \"email\": \"lucca_dacosta@vlcorporate.com\",\n  \"telephone\": \"(48)98955-9756\",\n  \"civilState\": \"SOLTEIRO\",\n  \"emergencyContact\": \"(48)3637-9695\",\n  \"addressId\": 9,\n  \"nationality\": \"Brasil\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "UpdatePatient",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/pacientes/7",
+                            "path": [
+                                "7"
+                            ],
+                            "host": [
+                                "pacientes"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"name\": \"Lucca Daniel Nicolas da Costa\",\n  \"cpf\": \"126.622.504-18\",\n  \"rg\": \"382773226\",\n  \"birthdate\": \"17/02/1951\",\n  \"gender\": \"Feminino\",\n  \"email\": \"lucca_dacosta@vlcorporate.com\",\n  \"telephone\": \"(48)98917-9756\",\n  \"civilState\": \"SOLTEIRO\",\n  \"emergencyContact\": \"(48)3637-9695\",\n  \"addressId\": 9,\n  \"nationality\": \"Brasil\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "GetAllPatients",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/pacientes",
+                            "query": [
+                                {
+                                    "key": "nome",
+                                    "value": "ferr",
+                                    "disabled": true
+                                }
+                            ],
+                            "variable": [],
+                            "host": [
+                                "pacientes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GetPatientById",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/pacientes/7",
+                            "path": [
+                                "7"
+                            ],
+                            "host": [
+                                "pacientes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DeletePatient",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/pacientes/7",
+                            "path": [
+                                "7"
+                            ],
+                            "host": [
+                                "pacientes"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "MedicationAdministering",
+            "item": [
+                {
+                    "name": "RegisterMedicationAdministering",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/medicamentos",
+                            "host": [
+                                "medicamentos"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"patient\": {\n    \"id\": 2\n  },\n  \"doctor\": {\n    \"id\": 1\n  },\n  \"type\": \"CAPSULA\",\n  \"name\": \"Droga 1\",\n  \"observations\": \"Isso é uma observação\",\n  \"unit\": \"GRAMA\",\n  \"amount\": 50\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "UpdateMedicationAdministering",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "/medicamentos/9",
+                            "path": [
+                                "9"
+                            ],
+                            "host": [
+                                "medicamentos"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"type\": \"GEL\",\n  \"observations\": \"Isso é uma observação de verdade\",\n  \"unit\": \"MILILITRO\",\n  \"amount\": 25\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "GetMedicationAdministeringById",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/medicamentos/9",
+                            "path": [
+                                "9"
+                            ],
+                            "host": [
+                                "medicamentos"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DeleteMedicationAdministering",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "/medicamentos/9",
+                            "path": [
+                                "9"
+                            ],
+                            "host": [
+                                "medicamentos"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Statistics",
+            "item": [
+                {
+                    "name": "GetStatistics",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/estatisticas",
+                            "host": [
+                                "estatisticas"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address",
+            "item": [
+                {
+                    "name": "RegisterAddress",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "/enderecos",
+                            "host": [
+                                "enderecos"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"cep\": \"69909-652\",\n  \"city\": \"Rio Branco\",\n  \"state\": \"AC\",\n  \"street\": \"Rua Abacabeira\",\n  \"number\": \"442\",\n  \"district\":  \"Vila da Amizade\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "GetAllAddresses",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "/enderecos",
+                            "host": [
+                                "enderecos"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
